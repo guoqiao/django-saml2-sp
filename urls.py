@@ -1,9 +1,7 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import url, include
 from django.contrib.auth.views import logout
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-admin.autodiscover()
 
 try:
     from django.conf import settings
@@ -13,8 +11,8 @@ try:
 except:
     logout_url = 'accounts/logout/'
 
-urlpatterns = patterns('',
+urlpatterns = ['',
     url(r'^' + logout_url, logout, name='logout_url'),
+    (r'^sp/', include('saml2sp.urls')),
     (r'^admin/', include(admin.site.urls)),
-    (r'^sp/', include('sptest.saml2sp.urls')),
-)
+]
