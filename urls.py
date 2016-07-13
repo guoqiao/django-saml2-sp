@@ -11,8 +11,8 @@ try:
 except:
     logout_url = 'accounts/logout/'
 
-urlpatterns = ['',
+urlpatterns = [
     url(r'^' + logout_url, logout, name='logout_url'),
-    (r'^sp/', include('saml2sp.urls')),
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^sp/', include('saml2sp.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 ]
