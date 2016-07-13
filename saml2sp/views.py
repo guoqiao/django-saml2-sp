@@ -1,21 +1,17 @@
 # Python imports
 import base64
-from xml.dom.minidom import parseString
 # Django imports
 from django import forms
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_view_exempt
 # Other imports
 from BeautifulSoup import BeautifulStoneSoup
 # Local imports
 import base
-import codex
 import saml2sp_settings
 import xml_render
 import xml_signing
@@ -154,7 +150,6 @@ def sso_idp_select(request):
         context_instance=RequestContext(request))
 
 
-@csrf_view_exempt
 def sso_response(request):
     """
     Handles a POSTed SSO Assertion and logs the user in.
